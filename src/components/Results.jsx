@@ -30,6 +30,7 @@ const Results = () => {
                 <div className="flex flex-wrap justify-between space-y-6 sm:px-56">
                     {results?.map(({ link, title, description }, index) => (
                         <div key={index} className="w-full md:w-2/5">
+                            {console.log(results.results)}
                             <a href={link} target="_blank" rel="noreferrer">
                                 <p className="text-md dark:text-white-500 ">
                                     {link.lenght > 10 ? link.substring(0, 10) : link}
@@ -47,11 +48,11 @@ const Results = () => {
             );
         case '/images':
             return (
-                <div className="flex flex-wrap justify-center space-y-6 sm:px-56">
+                <div className="flex flex-wrap justify-center items-center">
                     {results?.map(({ image, link: { href, title } }, index) => (
-                        <a className="sm:p-3 p-5" href={href} key={index} target="_blank" rel="noreferrer">
+                        <a href={href} target="_blank" key={index} rel="noreferrer" className="sm:p-3 p-5">
                             <img src={image?.src} alt={title} loading="lazy" />
-                            <p className="w-36 break-words text-sm mt-2">{title}</p>
+                            <p className="sm:w-36 w-36 break-words text-sm mt-2">{title}</p>
                         </a>
                     ))}
                 </div>
@@ -61,7 +62,7 @@ const Results = () => {
                 <div className="flex flex-wrap">
                     {results?.map((video, index) => (
                         <div key={index} className="p-2">
-                            <ReactPlayer url={video.additional_links?.[0].href} controls width="355px" height="200px"/>
+                            <ReactPlayer url={video.additional_links?.[0].href} controls width="355px" height="200px" />
                         </div>
                     ))}
                 </div>
